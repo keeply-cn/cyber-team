@@ -1,0 +1,40 @@
+{
+  "name": "cyber-team",
+  "version": "1.0.0",
+  "description": "Cyber Team CLI - Multi-Agent Collaboration Tool",
+  "main": "dist/index.js",
+  "bin": {
+    "cyber-team": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "link": "npm run build && npm link",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": [
+    "cli",
+    "agent",
+    "collaboration"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^22.0.1",
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^8.2.5",
+    "simple-git": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^8.2.10",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.11.0",
+    "jest": "^30.3.0",
+    "ts-jest": "^29.4.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
