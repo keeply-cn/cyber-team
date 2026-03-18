@@ -4,7 +4,7 @@
   "description": "Cyber Team CLI - Multi-Agent Collaboration Tool",
   "main": "dist/index.js",
   "bin": {
-    "cyber-team": "./dist/index.js"
+    "cyber-team": "./bin/cyber-team"
   },
   "scripts": {
     "build": "tsc",

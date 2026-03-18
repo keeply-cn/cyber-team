@@ -25,6 +25,9 @@ npm install
 echo "🔨 构建项目..."
 npm run build
 
+echo "📁 设置权限..."
+chmod +x bin/cyber-team
+
 echo "🔗 链接到全局..."
 npm link
 
