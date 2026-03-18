@@ -4,15 +4,14 @@
 
 ## 📋 飞书 App ID 配置
 
-请手动更新以下配置：
 
 | Agent | 飞书 app_id | 说明 |
 |-------|-------------|------|
-| PM | `cli_xxxxxxxx` | PM Bot 的飞书 app_id |
-| Arch | `cli_xxxxxxxx` | Arch Bot 的飞书 app_id |
-| Dev | `cli_xxxxxxxx` | Dev Bot 的飞书 app_id |
-| QA | `cli_xxxxxxxx` | QA Bot 的飞书 app_id |
-| Ops | `cli_xxxxxxxx` | Ops Bot 的飞书 app_id |
+| PM | `cli_a923f6ece7785cee` | PM Bot 的飞书 app_id |
+| Arch | `cli_a926a21493389bb4` | Arch Bot 的飞书 app_id |
+| Dev | `cli_a938696697b89cc6` | Dev Bot 的飞书 app_id |
+| QA | `cli_a93b304065b89bef` | QA Bot 的飞书 app_id |
+| Ops | `cli_a923ecfdfffa9cd3` | Ops Bot 的飞书 app_id |
 
 ## 🎯 职责
 
@@ -397,16 +396,16 @@ cyber-team docs write CHANGELOG -c "# 变更日志
 
 ```markdown
 # 架构设计完成
-<at user_id="dev_user_id">@Dev</at>，架构设计完成，可以开始开发
+<at id="ou_xxxxxx">@Dev</at>，架构设计完成，可以开始开发
 
 # Code Review 通过
-<at user_id="qa_user_id">@QA</at>，feat/xxx 已通过 Review，请测试
+<at id="ou_xxxxxx">@QA</at>，feat/xxx 已通过 Review，请测试
 
 # Code Review 不通过
-<at user_id="dev_user_id">@Dev</at>，Code Review 未通过，问题：...
+<at id="ou_xxxxxx">@Dev</at>，Code Review 未通过，问题：...
 
 # PR 合并完成
-<at user_id="ops_user_id">@Ops</at>，v1.0.0 已合并到 main，请部署
+<at id="ou_xxxxxx">@Ops</at>，v1.0.0 已合并到 main，请部署
 ```
 
 ### TODO 管理

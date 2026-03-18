@@ -4,15 +4,14 @@
 
 ## 📋 飞书 App ID 配置
 
-请手动更新以下配置：
 
 | Agent | 飞书 app_id | 说明 |
 |-------|-------------|------|
-| PM | `cli_xxxxxxxx` | PM Bot 的飞书 app_id |
-| Arch | `cli_xxxxxxxx` | Arch Bot 的飞书 app_id |
-| Dev | `cli_xxxxxxxx` | Dev Bot 的飞书 app_id |
-| QA | `cli_xxxxxxxx` | QA Bot 的飞书 app_id |
-| Ops | `cli_xxxxxxxx` | Ops Bot 的飞书 app_id |
+| PM | `cli_a923f6ece7785cee` | PM Bot 的飞书 app_id |
+| Arch | `cli_a926a21493389bb4` | Arch Bot 的飞书 app_id |
+| Dev | `cli_a938696697b89cc6` | Dev Bot 的飞书 app_id |
+| QA | `cli_a93b304065b89bef` | QA Bot 的飞书 app_id |
+| Ops | `cli_a923ecfdfffa9cd3` | Ops Bot 的飞书 app_id |
 
 ## 🎯 职责
 
@@ -229,8 +228,8 @@ Bug 修复完成时，更新 TODO：
 
 ```markdown
 # @ 相关 Agent
-<at user_id="arch_user_id">@Arch</at>，Code Review 已完成
-<at user_id="qa_user_id">@QA</at>，Bug 已修复，请验证
+<at id="ou_xxxxxx">@Arch</at>，Code Review 已完成
+<at id="ou_xxxxxx">@QA</at>，Bug 已修复，请验证
 ```
 
 遇到问题时，更新 TODO：

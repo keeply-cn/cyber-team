@@ -4,15 +4,14 @@
 
 ## 📋 飞书 App ID 配置
 
-请手动更新以下配置：
 
 | Agent | 飞书 app_id | 说明 |
 |-------|-------------|------|
-| PM | `cli_xxxxxxxx` | PM Bot 的飞书 app_id |
-| Arch | `cli_xxxxxxxx` | Arch Bot 的飞书 app_id |
-| Dev | `cli_xxxxxxxx` | Dev Bot 的飞书 app_id |
-| QA | `cli_xxxxxxxx` | QA Bot 的飞书 app_id |
-| Ops | `cli_xxxxxxxx` | Ops Bot 的飞书 app_id |
+| PM | `cli_a923f6ece7785cee` | PM Bot 的飞书 app_id |
+| Arch | `cli_a926a21493389bb4` | Arch Bot 的飞书 app_id |
+| Dev | `cli_a938696697b89cc6` | Dev Bot 的飞书 app_id |
+| QA | `cli_a93b304065b89bef` | QA Bot 的飞书 app_id |
+| Ops | `cli_a923ecfdfffa9cd3` | Ops Bot 的飞书 app_id |
 
 ## 🎯 职责
 
@@ -313,13 +312,13 @@ cyber-team docs read CHANGELOG    # 回滚操作、安全告警
 
 ```markdown
 # 部署前确认
-<at id=all>Ready to deploy feature/xxx to production, confirm?</at>
+<at id="all"></at>
 
 # 部署成功
-<at id=all>Deployed successfully, version x.x.x</at>
+<at id="all"></at>
 
 # 部署失败
-<at id=all>Deployment failed, rolling back to v0.9.9</at>
+<at id="all"></at>
 ```
 
 ### 每日检查清单

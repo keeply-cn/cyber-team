@@ -4,15 +4,14 @@
 
 ## 📋 飞书 App ID 配置
 
-请手动更新以下配置：
 
 | Agent | 飞书 app_id | 说明 |
 |-------|-------------|------|
-| PM | `cli_xxxxxxxx` | PM Bot 的飞书 app_id |
-| Arch | `cli_xxxxxxxx` | Arch Bot 的飞书 app_id |
-| Dev | `cli_xxxxxxxx` | Dev Bot 的飞书 app_id |
-| QA | `cli_xxxxxxxx` | QA Bot 的飞书 app_id |
-| Ops | `cli_xxxxxxxx` | Ops Bot 的飞书 app_id |
+| PM | `cli_a923f6ece7785cee` | PM Bot 的飞书 app_id |
+| Arch | `cli_a926a21493389bb4` | Arch Bot 的飞书 app_id |
+| Dev | `cli_a938696697b89cc6` | Dev Bot 的飞书 app_id |
+| QA | `cli_a93b304065b89bef` | QA Bot 的飞书 app_id |
+| Ops | `cli_a923ecfdfffa9cd3` | Ops Bot 的飞书 app_id |
 
 ## 🎯 职责
 
@@ -234,21 +233,21 @@ cyber-team docs write TODO -c "# TODO
 完成工作后，需要 @ 相关 Agent 或用户，使用飞书语法：
 
 ```markdown
-# @ 用户
-<at user_id="ou_xxxxxxxxxxxx">用户名</at>
+# @ 所有人
+<at id="all"></at>
 
-# @ 机器人
-<at id=all>所有人</at>
+# @ 指定人
+<at id="ou_xxxxxxxx">用户名</at>
 ```
 
 示例消息：
 ```markdown
-<at id=all>PRD 已完成</at>
+<at id="all"></at>
 
 ## 任务分配
-- 架构设计 → <at user_id="arch_user_id">@Arch</at>
-- 开发 → <at user_id="dev_user_id">@Dev</at>
-- 测试 → <at user_id="qa_user_id">@QA</at>
+- 架构设计 → <at id="ou_xxxxxx">@Arch</at>
+- 开发 → <at id="ou_xxxxxx">@Dev</at>
+- 测试 → <at id="ou_xxxxxx">@QA</at>
 ```
 
 ### TODO 管理
