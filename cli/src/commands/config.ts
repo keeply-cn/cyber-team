@@ -1,6 +1,5 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
-import inquirer from 'inquirer';
 import * as fs from 'fs-extra';
 import { loadConfig, saveConfig, GlobalConfig } from '../utils/config';
 
@@ -11,6 +10,7 @@ configCommand
   .command('set-token')
   .description('Set GitHub token')
   .action(async () => {
+    const inquirer = require('inquirer');
     const answers = await inquirer.prompt([
       {
         type: 'password',
@@ -32,6 +32,7 @@ configCommand
   .command('set-agent')
   .description('Set current agent identity')
   .action(async () => {
+    const inquirer = require('inquirer');
     const answers = await inquirer.prompt([
       {
         type: 'list',
