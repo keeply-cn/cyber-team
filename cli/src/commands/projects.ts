@@ -1,6 +1,5 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
-import inquirer from 'inquirer';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import {
@@ -22,6 +21,7 @@ projectsCommand
   .command('create [name]')
   .description('Create a new project')
   .action(async (name?: string) => {
+    const inquirer = require('inquirer');
     let projectName = name;
     
     if (!projectName) {
