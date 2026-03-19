@@ -134,6 +134,9 @@ npm test
 
 # 5. 提交代码
 cyber-team git commit "feat: xxx"
+
+# 6. 推送代码
+cyber-team git push
 ```
 
 ### 3. Bug 修复
