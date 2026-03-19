@@ -110,7 +110,8 @@ gitCommand
   .command('branch [name]')
   .description('List or create branch')
   .option('-a, --agent <agent>', 'Specify agent')
-  .action(async (name: string | undefined, options: { agent?: string }) => {
+  .option('-c, --create <branch>', 'Create and switch to branch')
+  .action(async (name: string | undefined, options: { agent?: string; create?: string }) => {
     const config = loadConfigSync();
     if (!config?.currentProject) {
       console.log(chalk.yellow('No current project'));
@@ -120,6 +121,14 @@ gitCommand
     const gitsrcPath = getGitsrcPath(config.currentProject);
     const git = await getGit(gitsrcPath);
 
+    // Option 1: -c/--create branch
+    if (options.create) {
+      await git.checkoutLocalBranch(options.create);
+      console.log(chalk.green(`✓ Created and switched to branch: ${options.create}`));
+      return;
+    }
+
+    // Option 2: positional argument
     if (name) {
       await git.checkoutLocalBranch(name);
       console.log(chalk.green(`✓ Created and switched to branch: ${name}`));
@@ -174,8 +183,9 @@ gitCommand
   .command('push')
   .description('Push to remote')
   .option('-u, --set-upstream', 'Set upstream')
+  .option('-f, --force', 'Force push')
   .option('-a, --agent <agent>', 'Specify agent')
-  .action(async (options: { setUpstream?: boolean; agent?: string }) => {
+  .action(async (options: { setUpstream?: boolean; force?: boolean; agent?: string }) => {
     const config = loadConfigSync();
     if (!config?.currentProject) {
       console.log(chalk.yellow('No current project'));
@@ -189,6 +199,8 @@ gitCommand
       if (options.setUpstream) {
         const branch = await git.branchLocal().then(b => b.current!);
         await git.push(['-u', 'origin', branch]);
+      } else if (options.force) {
+        await git.push(['-f', 'origin']);
       } else {
         await git.push();
       }
@@ -213,6 +225,40 @@ gitCommand
     const git = await getGit(gitsrcPath);
     await git.pull();
     console.log(chalk.green('✓ Pulled'));
+  });
+
+gitCommand
+  .command('fetch')
+  .description('Fetch from remote')
+  .option('-a, --agent <agent>', 'Specify agent')
+  .action(async (options: { agent?: string }) => {
+    const config = loadConfigSync();
+    if (!config?.currentProject) {
+      console.log(chalk.yellow('No current project'));
+      process.exit(1);
+    }
+
+    const gitsrcPath = getGitsrcPath(config.currentProject);
+    const git = await getGit(gitsrcPath);
+    await git.fetch();
+    console.log(chalk.green('✓ Fetched'));
+  });
+
+gitCommand
+  .command('rebase <branch>')
+  .description('Rebase current branch onto another branch')
+  .option('-a, --agent <agent>', 'Specify agent')
+  .action(async (branch: string, options: { agent?: string }) => {
+    const config = loadConfigSync();
+    if (!config?.currentProject) {
+      console.log(chalk.yellow('No current project'));
+      process.exit(1);
+    }
+
+    const gitsrcPath = getGitsrcPath(config.currentProject);
+    const git = await getGit(gitsrcPath);
+    await git.rebase([branch]);
+    console.log(chalk.green(`✓ Rebased onto ${branch}`));
   });
 
 gitCommand

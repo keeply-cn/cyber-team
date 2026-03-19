@@ -2,7 +2,9 @@
 
 > **版本**: v3.0.0 | **最后更新**: 2026-03-18 | **维护者**: Dev
 
-## 📋 飞书 App ID 配置
+## 📋 飞书 App ID 配置（用于 Agent 间通知）
+
+> **注意**: 文档存储已改为本地文件系统，此配置仅用于 Agent 间 @ 通知
 
 
 | Agent | 飞书 app_id | 说明 |
@@ -78,26 +80,25 @@ cyber-team docs write TODO -c "# TODO
 # 4. 读取架构文档
 cyber-team docs read ARCHITECTURE
 
-# 5. 获取项目本地路径
+# 5. 获取项目本地路径并创建分支
 cd "$(cyber-team projects get-path)/gitsrc"
 
 # 6. 拉取最新 main 分支代码
-git checkout main
-git pull origin main
+cyber-team git checkout main
+cyber-team git pull
 
 # 7. 创建功能分支
-git checkout -b feat/user-login
+cyber-team git branch -c feat/user-login
 
 # 8. 编写代码
 # - 实现业务逻辑
 # - 编写单元测试
 
-# 9. 本地提交
-git add .
-git commit -m "feat: add user login"
+# 9. 本地提交（自动 git add .）
+cyber-team git commit "feat: add user login"
 
 # 10. 推送到远程分支
-git push -u origin feat/user-login
+cyber-team git push -u
 
 # 11. 更新 TODO（完成任务）
 cyber-team docs write TODO -c "# TODO
@@ -147,19 +148,18 @@ cyber-team docs read BUG_REPORT
 cd "$(cyber-team projects get-path)/gitsrc"
 
 # 6. 拉取代码
-git checkout feat/user-login
-git pull origin feat/user-login
+cyber-team git checkout feat/user-login
+cyber-team git pull
 
 # 7. 修复 Bug
 # - 修复 BUG-001：登录失败无提示
 # - 修复 BUG-002：密码长度未验证
 
-# 8. 本地提交
-git add .
-git commit -m "fix: resolve bugs from QA"
+# 8. 本地提交（自动 git add .）
+cyber-team git commit "fix: resolve bugs from QA"
 
 # 9. 推送到远程分支
-git push origin feat/user-login
+cyber-team git push
 
 # 10. 更新 TODO（完成任务）
 cyber-team docs write TODO -c "# TODO
@@ -328,9 +328,17 @@ cyber-team docs read TODO           # 测试失败、任务优先级
 ### 代码冲突
 
 1. 拉取最新 main 分支
-2. 在功能分支上 rebase
+cyber-team git checkout main
+cyber-team git pull
+
+2. 切换到功能分支并变基
+cyber-team git checkout feat/xxx
+cyber-team git rebase main
+
 3. 解决冲突
+
 4. 重新推送
+cyber-team git push -f
 
 ---
 

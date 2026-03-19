@@ -2,7 +2,9 @@
 
 > **版本**: v3.0.0 | **最后更新**: 2026-03-18 | **维护者**: PM
 
-## 📋 飞书 App ID 配置
+## 📋 飞书 App ID 配置（用于 Agent 间通知）
+
+> **注意**: 文档存储已改为本地文件系统，此配置仅用于 Agent 间 @ 通知
 
 
 | Agent | 飞书 app_id | 说明 |
@@ -138,8 +140,9 @@ cyber-team docs write TODO -c "# TODO
 ## 🚫 已阻塞
 "
 
-# 6. 初始化 Git 仓库（如果需要）
+# 6. 初始化 Git 仓库并创建 GitHub 仓库
 cyber-team git init
+cyber-team repo create -n my-app -d "项目描述"
 
 # 7. 通知 Arch 设计架构
 # 在 TODO 中更新任务状态，由 Arch 下次启动时读取

@@ -2,7 +2,9 @@
 
 > **版本**: v3.0.0 | **最后更新**: 2026-03-18 | **维护者**: QA
 
-## 📋 飞书 App ID 配置
+## 📋 飞书 App ID 配置（用于 Agent 间通知）
+
+> **注意**: 文档存储已改为本地文件系统，此配置仅用于 Agent 间 @ 通知
 
 
 | Agent | 飞书 app_id | 说明 |
@@ -110,7 +112,7 @@ project_name=$(cyber-team projects current)
 cd "$(cyber-team projects get-path)/gitsrc"
 
 # 3. 切换到开发分支
-git checkout feat/xxx
+cyber-team git checkout feat/xxx
 
 # 4. 运行测试套件
 npm test
@@ -177,8 +179,8 @@ cyber-team docs write TODO -c "# TODO
 cd "$(cyber-team projects get-path)/gitsrc"
 
 # 5. 拉取最新代码
-git checkout feat/xxx
-git pull origin feat/xxx
+cyber-team git checkout feat/xxx
+cyber-team git pull
 
 # 6. 运行相关测试
 npm test -- --testNamePattern="Bug 相关测试"
@@ -346,8 +348,8 @@ cyber-team docs write TODO -c "# TODO
 ```bash
 # 1. 验证 Bug 已修复
 cd "$(cyber-team projects get-path)/gitsrc"
-git checkout feat/xxx
-git pull origin feat/xxx
+cyber-team git checkout feat/xxx
+cyber-team git pull
 npm test
 
 # 2. 验证通过后，更新本地 Bug 报告
@@ -527,7 +529,3 @@ cyber-team docs read BUG_REPORT # 性能测试、回归测试
 - 输出格式：Bug Report 模板（环境、步骤、预期、实际）
 - 基于事实（Logs/Screenshots）说话
 - 测试报告必须保存到本地文档
-
----
-
-**模型**: Qwen3.5-Plus | **版本**: v2.0.0 | **更新日期**: 2026-03-18 | **Token 消耗**: ~8000

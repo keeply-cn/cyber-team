@@ -1,34 +1,29 @@
 # TOOLS.md - Dev 能力边界
 
-> **版本**: v1.0.0 | **最后更新**: 2026-03-15 | **维护者**: Dev
+> **版本**: v2.0.0 | **最后更新**: 2026-03-19 | **维护者**: Dev
 
 ## 可用工具
 
-### 1. 文件操作
-- `read_file`: 读取代码和文档
-- `edit_file`: 修改代码 (str_replace/sed)
+### 1. 项目管理工具 (cyber-team CLI)
+- `cyber-team projects`: 项目管理命令（切换、获取路径）
+- `cyber-team docs`: 文档操作命令（读取、写入、追加）
+- `cyber-team git`: Git 操作命令（提交、推送、分支）
 
 ### 2. 开发工具
 - `execute_shell`: 运行命令、测试、构建
-- `git_commit`: 提交代码
 - `run_test`: 运行测试套件
 
 ### 3. 查询工具
 - `mcp_docs`: 查询 API 文档
 - `web_search`: 搜索技术方案
 
-### 4. 项目管理工具 (cyber-team CLI)
-- `cyber-team projects`: 项目管理命令
-- `cyber-team read-doc`: 读取文档（自动路径）
-- `cyber-team write-doc`: 写入文档（自动路径）
-
 ## 权限范围
 
 ### 可访问
-- `${PROJECT_SRC}/*` - 源代码目录
-- `${PROJECT_SRC}/tests/*` - 测试目录
-- `${PROJECT_DOCS}/*` - 项目文档目录
-- `${PROJECT_DOCS}/MEMORY.md` - 项目知识库
+- 项目源码目录 - 源代码目录
+- 项目源码目录/tests - 测试目录
+- 项目 docs 目录 - 项目文档目录
+- 项目 docs/MEMORY.md - 项目知识库
 - `cyber-team` CLI 工具（项目管理相关）
 
 ### 禁止访问
@@ -43,61 +38,63 @@
 
 #### 项目切换
 ```bash
-# MCP 工具调用（优先使用）
-{
-  "name": "switch_project",
-  "arguments": {"project_name": "my-app"}
-}
-
-# CLI 命令
+# 切换到指定项目
 cyber-team projects switch my-app
+
+# 查看当前项目
+cyber-team projects current
+
+# 获取项目本地路径
+cyber-team projects get-path
 ```
 
 #### 读取文档
 ```bash
-# 读取开发相关文档
-cyber-team read-doc ARCHITECTURE.md
-cyber-team read-doc API_SPEC.json
-cyber-team read-doc TODO.md
-
-# MCP 工具调用
-{
-  "name": "read_doc",
-  "arguments": {"doc_name": "ARCHITECTURE.md"}
-}
+# 使用 cyber-team 读取文档
+cyber-team docs read ARCHITECTURE
+cyber-team docs read API_SPEC
+cyber-team docs read TODO
+cyber-team docs read BUG_REPORT
 ```
 
 #### 写入文档
 ```bash
-# 更新开发笔记
-cyber-team write-doc MEMORY.md "# 开发笔记\n\n- 实现细节..."
+# 使用 cyber-team 写入文档
+cyber-team docs write MEMORY -c "# 开发笔记\n\n- 实现细节..."
+```
 
-# MCP 工具调用
-{
-  "name": "write_doc",
-  "arguments": {
-    "doc_name": "MEMORY.md",
-    "content": "# 开发笔记\n\n- 实现细节..."
-  }
-}
+#### 追加文档
+```bash
+# 追加内容到现有文档
+cyber-team docs append MEMORY -c "- 新发现...\n"
+```
+
+### Git 操作
+```bash
+# 创建并切换分支（两种方式）
+cyber-team git branch -c feat/xxx
+# 或
+cyber-team git branch feat/xxx
+cyber-team git checkout feat/xxx
+
+# 提交代码
+cyber-team git commit "feat: add user login"
+
+# 推送分支
+cyber-team git push -u
+
+# 获取最新代码
+cyber-team git fetch
+cyber-team git pull
+
+# 变基到 main
+cyber-team git rebase main
 ```
 
 ### execute_shell
 - 运行测试：`npm test`
 - 运行 Lint：`npm run lint`
 - 构建项目：`npm run build`
-- Git 操作：`git checkout -b feat/xxx`, `git commit`
-
-### git_commit
-- 必须使用 Conventional Commits 格式
-- 提交前确保测试通过
-- 提交信息简洁明确
-
-### edit_file
-- 优先使用 str_replace
-- 保持代码风格一致
-- 添加必要的注释
-- **优先在 `${PROJECT_SRC}` 中工作**
 
 ## 工具限制
 - 不能直接合并到 main
@@ -113,46 +110,44 @@ cyber-team write-doc MEMORY.md "# 开发笔记\n\n- 实现细节..."
 cyber-team projects switch my-app
 
 # 2. 读取设计文档
-cyber-team read-doc ARCHITECTURE.md
-cyber-team read-doc API_SPEC.json
+cyber-team docs read ARCHITECTURE
+cyber-team docs read API_SPEC
 
-# 3. 创建分支
-cd ${PROJECT_SRC}
-git checkout -b feat/xxx
+# 3. 获取项目本地路径并创建分支
+cyber-team git branch feat/xxx
+cyber-team git checkout feat/xxx
 ```
 
 ### 2. 日常开发
 ```bash
 # 1. 查看任务
-cyber-team read-doc TODO.md
+cyber-team docs read TODO
 
-# 2. 编写代码
-# 在 ${PROJECT_SRC}/src 中工作
+# 2. 获取项目本地路径
+cyber-team projects get-path
 
-# 3. 运行测试
+# 3. 编写代码
+# 在项目源码目录中工作
+
+# 4. 运行测试
 npm test
 
-# 4. 提交代码
-git commit -m "feat: xxx"
+# 5. 提交代码
+cyber-team git commit "feat: xxx"
 ```
 
 ### 3. Bug 修复
 ```bash
 # 1. 读取 Bug 报告
-cyber-team read-doc BUG_REPORT.md
+cyber-team docs read BUG_REPORT
 
 # 2. 修复 Bug
 # 修改代码
 
 # 3. 记录修复过程
-cyber-team write-doc MEMORY.md "# Bug 修复\n\n- 问题：...\n- 原因：...\n- 解决：..."
+cyber-team docs write MEMORY -c "# Bug 修复\n\n- 问题：...\n- 原因：...\n- 解决：..."
 ```
-
-## MCP 工具优先级
-
-1. **首选**: MCP 工具（`read_doc`, `write_doc`, `switch_project`）
-2. **备选**: CLI 命令（用于调试和验证）
 
 ---
 
-**参考文档**: [CLI_USAGE.md](../docs/CLI_USAGE.md)
+**参考文档**: [AGENTS.md](AGENTS.md) - Dev 操作手册

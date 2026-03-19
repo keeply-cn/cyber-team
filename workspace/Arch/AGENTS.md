@@ -2,7 +2,9 @@
 
 > **版本**: v3.0.0 | **最后更新**: 2026-03-18 | **维护者**: Arch
 
-## 📋 飞书 App ID 配置
+## 📋 飞书 App ID 配置（用于 Agent 间通知）
+
+> **注意**: 文档存储已改为本地文件系统，此配置仅用于 Agent 间 @ 通知
 
 
 | Agent | 飞书 app_id | 说明 |
@@ -173,8 +175,8 @@ cyber-team docs write TODO -c "# TODO
 cd "$(cyber-team projects get-path)/gitsrc"
 
 # 5. 拉取 Dev 的分支查看代码
-git fetch origin
-git checkout feat/user-login
+cyber-team git pull
+cyber-team git checkout feat/user-login
 
 # 6. 检查代码（对比 ARCHITECTURE.md）
 # - 架构一致性
@@ -274,18 +276,18 @@ cyber-team docs read TEST_REPORT
 # 5. 获取项目本地路径
 cd "$(cyber-team projects get-path)/gitsrc"
 
-# 6. 创建 Pull Request（如果还没创建）
-gh pr create --base main --head feat/user-login --title "feat: user login" --body "Resolves: US-001"
+# 6. 创建 Pull Request
+cyber-team git pr-create -t "feat: user login" -b "Resolves: US-001"
 
 # 7. 合并 PR
-git checkout main
-git pull origin main
-git merge feat/user-login --no-ff
-git push origin main
+cyber-team git checkout main
+cyber-team git pull
+cyber-team git merge feat/user-login
+cyber-team git push
 
 # 8. 创建版本标签
-git tag v1.0.0
-git push origin v1.0.0
+cyber-team git tag v1.0.0
+cyber-team git tag-push
 
 # 9. 更新 TODO（完成任务）
 cyber-team docs write TODO -c "# TODO
@@ -390,27 +392,7 @@ cyber-team docs write CHANGELOG -c "# 变更日志
 
 ---
 
-## 🤝 协作规范
-
-### 通知规则（使用飞书 @ 语法）
-
-```markdown
-# 架构设计完成
-<at id="ou_xxxxxx">@Dev</at>，架构设计完成，可以开始开发
-
-# Code Review 通过
-<at id="ou_xxxxxx">@QA</at>，feat/xxx 已通过 Review，请测试
-
-# Code Review 不通过
-<at id="ou_xxxxxx">@Dev</at>，Code Review 未通过，问题：...
-
-# PR 合并完成
-<at id="ou_xxxxxx">@Ops</at>，v1.0.0 已合并到 main，请部署
-```
-
-### TODO 管理
-
-### 记忆架构
+## 🐛 异常处理
 
 ```
 ┌─────────────────────────────────────────┐

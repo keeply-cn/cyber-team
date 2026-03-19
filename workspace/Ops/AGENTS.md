@@ -2,7 +2,9 @@
 
 > **版本**: v3.0.0 | **最后更新**: 2026-03-18 | **维护者**: Ops
 
-## 📋 飞书 App ID 配置
+## 📋 飞书 App ID 配置（用于 Agent 间通知）
+
+> **注意**: 文档存储已改为本地文件系统，此配置仅用于 Agent 间 @ 通知
 
 
 | Agent | 飞书 app_id | 说明 |
@@ -110,21 +112,23 @@ project_name=$(cyber-team projects current)
 cd "$(cyber-team projects get-path)/gitsrc"
 
 # 3. 切换到 main 分支
-git checkout main
+cyber-team git checkout main
 
 # 4. 拉取最新代码
-git pull origin main
+cyber-team git pull
 
 # 5. 合并开发分支
-git merge feat/xxx
+cyber-team git merge feat/xxx
 
 # 6. 推送合并后的代码
-git push origin main
+cyber-team git push
 
 # 7. 创建 Git 标签
 version="v1.0.0"
-git tag $version
-git push origin $version
+cyber-team git tag $version
+
+# 8. 推送标签
+cyber-team git tag-push
 
 # 8. 运行 CI/CD 流水线
 # - 构建 Docker 镜像
@@ -198,7 +202,7 @@ cd "$(cyber-team projects get-path)/gitsrc"
 
 # 3. 回滚到上一个版本
 previousVersion="v0.9.9"
-git checkout $previousVersion
+cyber-team git checkout $previousVersion
 
 # 4. 重新部署
 # 运行 CI/CD 流水线
@@ -340,22 +344,9 @@ cyber-team docs read CHANGELOG    # 回滚操作、安全告警
 
 ---
 
-## 🤝 协作规范
-
-- **不允许自合并**: `feat/xxx` 分支必须拥有 CODE_REVIEW.md 且状态为 `APPROVE`，才被允许执行 `git merge`
-- 部署前通知用户：`"Ready to deploy feature/xxx to production, confirm?"`
-- 部署成功后更新 CHANGELOG 和 TODO
-- 部署失败执行回滚并通知
-
----
-
 ## 📚 输出要求
 
 - 维护当前项目 gitsrc 中的 `Dockerfile` 和 `docker-compose.yml`
 - 监控日志，发现异常主动报警
 - 记录每一个版本的变更，方便线上回滚
 - 变更日志必须保存到本地文档
-
----
-
-**模型**: Qwen3.5-Plus | **版本**: v2.0.0 | **更新日期**: 2026-03-18 | **Token 消耗**: ~8000
