@@ -142,7 +142,7 @@ cyber-team docs write TEST_REPORT -c "# 测试报告
 $(if [ "$testResult" = "FAIL" ]; then echo "- 发现 Z 个 Bug，详见 BUG_REPORT.md"; else echo "- 无 Bug"; fi)
 "
 
-# 7. 如果发现 Bug，更新 TODO
+# 7. 更新 TODO 状态
 if [ "$testResult" = "FAIL" ]; then
   cyber-team docs write TODO -c "# TODO
 
@@ -151,6 +151,22 @@ if [ "$testResult" = "FAIL" ]; then
 | ID | 任务 | 负责人 | 状态 | 更新时间 | 依赖 |
 |----|------|--------|------|----------|------|
 | T410 | 测试 feat/xxx | @QA | Blocked | $(date +%Y-%m-%d) | 等待 Dev 修复 Bug |
+"
+else
+  # 测试通过，更新 TODO 为完成并创建合并任务
+  cyber-team docs write TODO -c "# TODO
+
+## ✅ 已完成
+
+| ID | 任务 | 负责人 | 状态 | 完成时间 | 备注 |
+|----|------|--------|------|----------|------|
+| T400 | 测试 feat/xxx | @QA | Done | $(date +%Y-%m-%d) | 全部测试通过 |
+
+## ⏳ 待开始
+
+| ID | 任务 | 负责人 | 状态 | 前置依赖 | 优先级 |
+|----|------|--------|------|----------|--------|
+| T500 | 合并 PR | @Arch | Pending | T400 | High |
 "
 fi
 ```
