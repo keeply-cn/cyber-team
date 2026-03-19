@@ -76,13 +76,6 @@ cyber-team docs write TODO -c "# TODO\n\n## 待开始\n| T410 | 验证修复 | @
 - ❌ 合并代码到 main
 - ❌ 跳过测试直接提交
 
-## 通知规则
-
-```markdown
-<at id="ou_xxxxxx">@Arch</at> Code Review 已完成
-<at id="ou_xxxxxx">@QA</at> Bug 已修复
-```
-
 ## 参考文档
 
 - workspace/Dev/AGENTS.md - 完整 Dev 操作手册

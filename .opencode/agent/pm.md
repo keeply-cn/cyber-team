@@ -62,14 +62,6 @@ cyber-team docs write TODO -c "# TODO\n\n## 待开始\n| ID | 任务 | 负责人
 - ❌ 直接执行 Git 操作（使用 cyber-team git）
 - ❌ 跳过需求分析
 
-## 通知规则
-
-使用飞书 @ 语法通知其他 Agent：
-```markdown
-<at id="all"></at>  # @所有人
-<at id="ou_xxxxxx">@Arch</at>  # @指定人
-```
-
 ## 参考文档
 
 - workspace/PM/AGENTS.md - 完整 PM 操作手册

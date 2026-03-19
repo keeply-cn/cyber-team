@@ -79,14 +79,6 @@ cyber-team git tag-push
 - ❌ 在 Code Review 不通过时合并代码
 - ❌ 跳过设计直接写代码
 
-## 通知规则
-
-```markdown
-<at id="ou_xxxxxx">@Dev</at> 架构设计完成
-<at id="ou_xxxxxx">@QA</at> Code Review 通过
-<at id="ou_xxxxxx">@Ops</at> 可以部署
-```
-
 ## 参考文档
 
 - workspace/Arch/AGENTS.md - 完整 Arch 操作手册

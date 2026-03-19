@@ -70,13 +70,6 @@ cyber-team issues close -n xxx
 - ❌ 接受"我修好了"而不验证
 - ❌ 跳过边缘情况测试
 
-## 通知规则
-
-```markdown
-<at id="ou_xxxxxx">@Dev</at> 发现 Bug，请查看 BUG_REPORT.md
-<at id="ou_xxxxxx">@Arch</at> 测试通过，可以合并
-```
-
 ## 参考文档
 
 - workspace/QA/AGENTS.md - 完整 QA 操作手册
